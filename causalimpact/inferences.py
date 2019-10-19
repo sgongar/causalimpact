@@ -5,7 +5,7 @@ from causalimpact.misc import unstandardize
 
 def compile_posterior_inferences(results, data, df_pre, df_post,
                                  post_period_response, alpha,
-                                 orig_std_params, estimation):
+                                 orig_std_params, estimation, log):
     if estimation == "MLE":
         # Compute point predictions of counterfactual (in standardized space)
         if df_post is not None:
@@ -28,6 +28,7 @@ def compile_posterior_inferences(results, data, df_pre, df_post,
                                 orig_std_params)
         post_ci.index = df_post.index
         ci = pd.concat([pre_ci, post_ci])
+        log.debug('{0}'.format(list(data.columns.values.tolist())))
         point_pred_upper = ci["upper y"].to_frame()
         point_pred_lower = ci["lower y"].to_frame()
 
