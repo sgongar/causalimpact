@@ -28,7 +28,7 @@ def compile_posterior_inferences(results, data, df_pre, df_post,
                                 orig_std_params)
         post_ci.index = df_post.index
         ci = pd.concat([pre_ci, post_ci])
-        log.debug('{0}'.format(list(data.columns.values.tolist())))
+        log.debug('{0}'.format(list(ci.columns.values.tolist())))
         point_pred_upper = ci["upper y"].to_frame()
         point_pred_lower = ci["lower y"].to_frame()
 
