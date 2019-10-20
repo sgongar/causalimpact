@@ -30,6 +30,7 @@ def compile_posterior_inferences(results, data, df_pre, df_post,
         ci = pd.concat([pre_ci, post_ci])
         log.debug('{0}'.format(list(ci.columns.values.tolist())))
         point_pred_upper = ci["upper y"].to_frame()
+        log.debug('{0}'.format(point_pred_upper))
         point_pred_lower = ci["lower y"].to_frame()
 
         response = data.iloc[:, 0]
